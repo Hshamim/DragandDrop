@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .placeholder-style::placeholder {
+    margin-left: 5px;
+    padding: 7px;
+    outline: none;
+  }
+  .blue-background-class {
+    opacity: 0;
+  }
+}

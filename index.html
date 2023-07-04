@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Alpine Plugins -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"
+    ></script>
+
+    <!-- Alpine Core -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+
+    <style>
+      .card-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        order: end;
+      }
+      .texta-area {
+        width: 100%;
+        border-radius: 10px;
+        border: 0.25px solid rgb(187, 186, 186);
+      }
+      .card_composer {
+        display: none;
+      }
+      .add_a_card {
+        display: flex;
+      }
+      .button_card_composer {
+        border-radius: 5px;
+      }
+      .list_container {
+        height: 100vh;
+      }
+      .card {
+        width: 256px;
+        background-color: white;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border-radius: 5px;
+        margin-bottom: 7px;
+      }
+    </style>
+
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div class="w-auto h-screen bg-[#98b7cc]">
+      <div class="w-auto h-[50px] bg-[#bacddb] flex items-center">
+        <p class="p-10 font-bold text-[#42526e]">Trello</p>
+      </div>
+      <div class="bord-container m-9 overflow-x-scroll h-full">
+        <div class="bord-section flex relative" x-data="{ open: false }">
+          <form id="task_form" class="order-last">
+            <div
+              class="w-[268px] bg-[#5c8099] p-2 rounded-lg ml-1"
+              id="hideshow"
+              x-on:click="open = ! open"
+            >
+              <a href="#">
+                <span>
+                  <i class="fa-light fa-plus text-[20px] text-cyan-100"></i
+                  ><span class="ml-2 text-cyan-100">Add another list</span>
+                </span>
+              </a>
+            </div>
+            <div
+              class="w-[268px] bg-gray-200 p-2 rounded-lg absolute top-0 ml-1"
+              x-show="open"
+              x-transition
+              @click.outside="open = false"
+              x-trap="open"
+            >
+              <input
+                id="new_task"
+                type="text"
+                class="w-[250px] py-1 focus:outline-sky-400 placeholder-style focus"
+                placeholder="Enter list title..."
+              />
+              <button
+                id="add_task"
+                type="button"
+                class="capitalize bg-sky-600 hover:bg-sky-700 p-1 rounded-sm text-white mt-2"
+              >
+                add list
+              </button>
+              <span x-on:click="open=!open"
+                ><i class="fa-solid fa-xmark text-2xl mt-2 p-1"></i
+              ></span>
+            </div>
+          </form>
+          <div id="tasks" class="flex gap-1"></div>
+        </div>
+      </div>
+    </div>
+    <div class="gtranslate_wrapper"></div>
+
+    <script type="module" src="index.js"></script>
+    <!-- <script type="module" src="/main.js"></script> -->
+  </body>
+</html>
